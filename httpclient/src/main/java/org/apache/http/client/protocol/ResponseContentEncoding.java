@@ -46,6 +46,8 @@ import org.apache.http.config.Lookup;
 import org.apache.http.config.RegistryBuilder;
 import org.apache.http.protocol.HttpContext;
 
+import com.ning.compress.lzf.LZFInputStream;
+
 /**
  * {@link HttpResponseInterceptor} responsible for processing Content-Encoding
  * responses.
@@ -77,6 +79,15 @@ public class ResponseContentEncoding implements HttpResponseInterceptor {
 
     };
 
+    private final static InputStreamFactory LZF = new InputStreamFactory() {
+
+        @Override
+        public InputStream create(final InputStream instream) throws IOException {
+            return new LZFInputStream(instream);
+        }
+
+    };
+
     private final Lookup<InputStreamFactory> decoderRegistry;
 
     /**
@@ -88,6 +99,7 @@ public class ResponseContentEncoding implements HttpResponseInterceptor {
                     .register("gzip", GZIP)
                     .register("x-gzip", GZIP)
                     .register("deflate", DEFLATE)
+                    .register("lzf", LZF)
                     .build();
     }
 
