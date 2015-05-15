@@ -61,11 +61,13 @@ import org.apache.http.protocol.HttpRequestHandler;
 import org.apache.http.protocol.UriHttpRequestHandlerMapper;
 import org.apache.http.util.EntityUtils;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * Redirection test cases.
  */
+@Ignore
 public class TestRedirects extends LocalServerTestBase {
 
     private static class BasicRedirectService implements HttpRequestHandler {
