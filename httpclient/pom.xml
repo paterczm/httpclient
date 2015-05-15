@@ -30,6 +30,7 @@
     <artifactId>httpcomponents-client</artifactId>
     <version>4.4</version>
   </parent>
+  <version>4.4-lzf</version>
   <artifactId>httpclient</artifactId>
   <name>Apache HttpClient</name>
   <description>
